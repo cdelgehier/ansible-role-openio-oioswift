@@ -23,7 +23,7 @@ openio_oioswift_slots:
 openio_oioswift_gridinit_dir: "{{ openio_gridinit_d | d('/etc/gridinit.d/') }}"
 openio_oioswift_gridinit_file_prefix: "{{ openio_oioswift_namespace }}-"
 
-openio_oioswift_bind_interface: "{{ ansible_default_ipv4.alias }}"
+openio_oioswift_bind_interface: "{{ openio_bind_interface | d(ansible_default_ipv4.alias) }}"
 openio_oioswift_bind_address:
   "{{ openio_bind_address \
     | default(hostvars[inventory_hostname]['ansible_' + openio_oioswift_bind_interface]['ipv4']['address']) }}"
